@@ -1,5 +1,6 @@
-call plug#begin('C:/Users/hanzo/AppData/Local/nvim')
+call plug#begin('C:/Users/hohfc/AppData/Local/nvim')
 Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
