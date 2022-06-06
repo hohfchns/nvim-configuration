@@ -1,8 +1,12 @@
-call plug#begin('C:/Users/hohfc/AppData/Local/nvim')
+call plug#begin('C:/Users/hanzo/AppData/Local/nvim')
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdcommenter'
 call plug#end()
+
+filetype plugin on
+let g:NERDCreateDefaultMappings = 1
 
 :set tabstop=4
 :set shiftwidth=4
