@@ -1,6 +1,4 @@
-let path = ''
-source path.vim
-call plug#begin(path)
+call plug#begin('$HOME/AppData/Local/nvim')
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
