@@ -5,8 +5,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdcommenter'
 call plug#end()
 
+set termguicolors 
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 filetype plugin on
 let g:NERDCreateDefaultMappings = 1
+
+nmap <silent> gd <Plug>(coc-definition)
+inoremap <silent> ,s <C-r>=CocActionAsync('showSignatureHelp')<CR>
 
 :set tabstop=4
 :set shiftwidth=4
