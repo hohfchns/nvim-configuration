@@ -1,4 +1,6 @@
-call plug#begin('C:/Users/hanzo/AppData/Local/nvim')
+let path = ''
+source path.vim
+call plug#begin(path)
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
