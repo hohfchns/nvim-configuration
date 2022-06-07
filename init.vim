@@ -3,8 +3,14 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdcommenter'
+Plug 'morhetz/gruvbox'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'jakemason/ouroboros'
 call plug#end()
 
+:nnoremap <c-s> :Ouroboros<CR>
+
+autocmd vimenter * ++nested colorscheme gruvbox
 set termguicolors 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
