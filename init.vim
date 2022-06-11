@@ -17,6 +17,7 @@ set foldexpr=nvim_treesetter#foldexpr()
 
 :luafile $HOME/AppData/Local/nvim/extra.lua
 
+:nnoremap <F5> :!.\gen_cc.bat<CR> :CocRestart<CR><CR>
 :nnoremap <c-s> :Ouroboros<CR>
 
 autocmd vimenter * ++nested colorscheme gruvbox
