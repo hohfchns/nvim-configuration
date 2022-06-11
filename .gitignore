@@ -2,3 +2,4 @@
 path.vim
 !.gitignore
 !init.vim
+!extra.lua

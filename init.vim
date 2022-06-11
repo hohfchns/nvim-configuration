@@ -7,7 +7,15 @@ Plug 'morhetz/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jakemason/ouroboros'
 Plug 'tikhomirov/vim-glsl'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
+
+set foldmethod=expr
+set foldexpr=nvim_treesetter#foldexpr()
+
+:luafile $HOME/AppData/Local/nvim/extra.lua
 
 :nnoremap <c-s> :Ouroboros<CR>
 
