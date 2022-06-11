@@ -6,6 +6,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jakemason/ouroboros'
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 :nnoremap <c-s> :Ouroboros<CR>
