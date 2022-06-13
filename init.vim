@@ -1,4 +1,10 @@
-call plug#begin('$HOME/AppData/Local/nvim')
+:let path = $HOME . "/AppData/Local/nvim/"
+:if !isdirectory("" . path)
+:let unixpath = $HOME . "/.config/nvim/" 
+:let path = unixpath
+:endif
+
+call plug#begin(path)
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -15,7 +21,7 @@ call plug#end()
 set foldmethod=expr
 set foldexpr=nvim_treesetter#foldexpr()
 
-:luafile $HOME/AppData/Local/nvim/extra.lua
+:execute "luafile " . path . "extra.lua"
 
 :nnoremap <F5> :!.\gen_cc.bat<CR> :CocRestart<CR><CR>
 :nnoremap <c-s> :Ouroboros<CR>
