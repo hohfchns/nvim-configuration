@@ -1,5 +1,7 @@
+:let platformunix = 0
 :let path = $HOME . "/AppData/Local/nvim/"
 :if !isdirectory("" . path)
+:let platformunix = 1
 :let unixpath = $HOME . "/.config/nvim/" 
 :let path = unixpath
 :endif
@@ -16,6 +18,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'lervag/vimtex'
 call plug#end()
 
 set foldmethod=expr
@@ -24,6 +27,10 @@ set foldexpr=nvim_treesetter#foldexpr()
 :execute "luafile " . path . "extra.lua"
 
 :nnoremap <F5> :!.\gen_cc.bat<CR> :CocRestart<CR><CR>
+:if platformunix
+:nnoremap <F5> :!./gen_cc<CR> :CocRestart<CR><CR>
+:endif
+
 :nnoremap <c-s> :Ouroboros<CR>
 
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -31,10 +38,24 @@ set termguicolors
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 filetype plugin on
+
 let g:NERDCreateDefaultMappings = 1
 
 nmap <silent> gd <Plug>(coc-definition)
 inoremap <silent> ,s <C-r>=CocActionAsync('showSignatureHelp')<CR>
+
+filetype plugin indent on
+
+syntax enable
+
+let g:vimtex_view_method = 'zathura'
+
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+
+" let g:vimtex_compiler_method = 'latexrun'
+
+" let maplocalleader = ","
 
 :set tabstop=4
 :set shiftwidth=4
