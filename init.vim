@@ -21,6 +21,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lervag/vimtex'
 call plug#end()
 
+set clipboard+=unnamedplus
+
 set foldmethod=expr
 set foldexpr=nvim_treesetter#foldexpr()
 
