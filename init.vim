@@ -10,7 +10,8 @@ call plug#begin(path)
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdcommenter'
+" Plug 'preservim/nerdcommenter'
+Plug 'terrortylor/nvim-comment'
 Plug 'morhetz/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'jakemason/ouroboros'
@@ -20,6 +21,13 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lervag/vimtex'
 call plug#end()
+
+:nnoremap <C-_> :CommentToggle<CR>
+:vnoremap <C-_> :CommentToggle<CR>
+
+au VimEnter * :silent !setxkbmap -option caps:escape
+
+au VimLeave * :silent !setxkbmap -option
 
 set clipboard+=unnamedplus
 
