@@ -20,7 +20,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lervag/vimtex'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
+
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 
 :nnoremap <C-_> :CommentToggle<CR>
 :vnoremap <C-_> :CommentToggle<CR>
@@ -73,6 +77,7 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 :set number
 
 if has('nvim')
+
   tnoremap <Esc> <C-\><C-n>
   tnoremap <M-[> <Esc>
   tnoremap <C-v><Esc> <Esc>
