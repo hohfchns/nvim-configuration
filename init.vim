@@ -21,7 +21,11 @@ Plug 'p00f/nvim-ts-rainbow'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
 call plug#end()
+
+:set hidden
 
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -29,10 +33,11 @@ vmap <S-Tab> <gv
 :nnoremap <C-_> :CommentToggle<CR>
 :vnoremap <C-_> :CommentToggle<CR>
 
-au VimEnter * :silent !setxkbmap -option caps:escape
+" au VimEnter * :silent !setxkbmap -option caps:escape
 
-au VimLeave * :silent !setxkbmap -option
+" au VimLeave * :silent !setxkbmap -option
 
+" set clipboard+=unnamed
 set clipboard+=unnamedplus
 
 set foldmethod=expr
@@ -105,3 +110,7 @@ if has('nvim')
   nnoremap <M-k> <c-w>k
   nnoremap <M-l> <c-w>l
 endif
+
+
+autocmd BufReadPost,FileReadPost * normal zR
+
