@@ -23,12 +23,19 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 :set hidden
 
+nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
+nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
+nnoremap <silent> <C-p>    <Cmd>BufferPick<CR>
+
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+nmap <Tab> >gv
+nmap <S-Tab> <gv
 
 :nnoremap <C-_> :CommentToggle<CR>
 :vnoremap <C-_> :CommentToggle<CR>
