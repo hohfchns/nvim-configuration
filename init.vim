@@ -23,7 +23,9 @@ Plug 'lervag/vimtex'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'akinsho/toggleterm.nvim', {'tag' : 'v1.*'}
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 
 :set hidden
@@ -31,6 +33,7 @@ call plug#end()
 nnoremap <silent>    <A-,> <Cmd>BufferPrevious<CR>
 nnoremap <silent>    <A-.> <Cmd>BufferNext<CR>
 nnoremap <silent> <C-p>    <Cmd>BufferPick<CR>
+nnoremap <silent>    <A-c> <Cmd>BufferClose<CR>
 
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -40,6 +43,10 @@ nmap <S-Tab> <gv
 :nnoremap <C-_> :CommentToggle<CR>
 :vnoremap <C-_> :CommentToggle<CR>
 
+nnoremap <C-x> :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <F9> :lua require'dap'.continue()<CR>
+nnoremap <F8> :lua require'dap'.step_over()<CR>
+nnoremap <F7> :lua require'dap'.step_into()<CR>
 " au VimEnter * :silent !setxkbmap -option caps:escape
 
 " au VimLeave * :silent !setxkbmap -option
@@ -118,6 +125,40 @@ if has('nvim')
   nnoremap <M-l> <c-w>l
 endif
 
-
 autocmd BufReadPost,FileReadPost * normal zR
+
+lua << EOF
+local dap = require('dap')
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = '/opt/cpptools/debugAdapters/bin/OpenDebugAD7',
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = true,
+  },
+  {
+    name = 'Attach to gdbserver :1234',
+    type = 'cppdbg',
+    request = 'launch',
+    MIMode = 'gdb',
+    miDebuggerServerAddress = 'localhost:1234',
+    miDebuggerPath = '/usr/bin/gdb',
+    cwd = '${workspaceFolder}',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+  },
+}
+
+EOF
 
